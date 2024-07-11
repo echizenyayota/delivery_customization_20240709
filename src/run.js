@@ -17,9 +17,9 @@ export function run(input) {
   const message = "May be delayed due to weather conditions";
 
   let toRename = input.cart.deliveryGroups
-    // Filter for delivery groups with a shipping address containing the affected state or province
+    // Filter for delivery groups with a shipping address not containing the affected state or province
     .filter(group => group.deliveryAddress?.provinceCode &&
-      group.deliveryAddress.provinceCode == "NC")
+      group.deliveryAddress.provinceCode != "NC")
     // Collect the delivery options from these groups
     .flatMap(group => group.deliveryOptions)
     // Construct a rename operation for each, adding the message to the option title
